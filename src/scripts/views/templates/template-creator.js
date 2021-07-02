@@ -1,57 +1,76 @@
 import CONFIG from '../../globals/config';
+import menuTemplate from './menu_review';
 
-const createMovieDetailTemplate = (movie) => `
-  <h2 class="movie__title">${movie.title}</h2>
-  <img class="movie__poster" src="${CONFIG.BASE_IMAGE_URL + movie.poster_path}" alt="${movie.title}" />
-  <div class="movie__info">
-  <h3>Information</h3>
-    <h4>Tagline</h4>
-    <p>${movie.tagline}</p>
-    <h4>Release Date</h4>
-    <p>${movie.release_date}</p>
-    <h4>Duration</h4>
-    <p>${movie.runtime} minutes</p>
+const createRestoDetailTemplate = (resto) => `
+<h2 class="resto__title">${resto.name}</h2>
+  <img class="resto__poster" src='${CONFIG.BASE_IMAGE_URL + /large/ + resto.pictureId}' alt="${resto.name}" />
+  <div class="resto__info">
+    <h4>Kategori</h4>
+    <p>${resto.categories.map((item) => item.name).join(', ')}</p>
+    <h4>City</h4>
+    <p>${resto.city}</p>
+    <h4>Address</h4>
+    <p>${resto.address} minutes</p>
     <h4>Rating</h4>
-    <p>${movie.vote_average}</p>
+    <p>${resto.rating}</p>
   </div>
-  <div class="movie__overview">
-    <h3>Overview</h3>
-    <p>${movie.overview}</p>
+  <div class="resto__overview">
+    <h3>Description</h3>
+    <p>${resto.description}</p>
   </div>
-</div>
-`;
 
-const createMovieItemTemplate = (movie) => `
-  <div class="movie-item">
-    <div class="movie-item__header">
-        <img class="movie-item__header__poster" alt="${movie.title}"
-            src="${movie.backdrop_path ? CONFIG.BASE_IMAGE_URL + movie.backdrop_path : 'https://picsum.photos/id/666/800/450?grayscale'}">
-        <div class="movie-item__header__rating">
-            <p>⭐️<span class="movie-item__header__rating__score">${movie.vote_average}</span></p>
+  <div class="warpper">
+        <input class="radio" id="one" name="group" type="radio" checked>
+        <input class="radio" id="two" name="group" type="radio">
+        <input class="radio" id="three" name="group" type="radio">
+        <div class="tabs">
+            <label class="tab" id="one-tab" for="one">Menu</label>
+            <label class="tab" id="two-tab" for="two">Review</label>
+            <label class="tab" id="three-tab" for="three">Add Review</label>
+        </div>
+        <div class="panels">
+            <div class="panel" id="one-panel">
+            ${menuTemplate.getMenu(resto.menus)}
+            </div>
+            <div class="panel" id="two-panel">           
+            ${menuTemplate.getReviews(resto.customerReviews)}
+            </div>
+            <div class="panel" id="three-panel">
+            <form>
+              <input id="name" type="text" placeholder="Nama"/>
+              <br />
+              <textarea id="review" placeholder="Review" rows="5"></textarea>
+              <br />
+              <button id="kirim" class="submitbutton">submit</button>              
+            </form>
+            </div>
         </div>
     </div>
-    <div class="movie-item__content">
-        <h3><a href="${`/#/detail/${movie.id}`}">${movie.title}</a></h3>
-        <p>${movie.overview}</p>
-    </div>
-  </div>
+`;
+
+const createRestoItemTemplate = (resto) => `<div class="menu__content"><a href="${`/#/detail/${resto.id}`}"><img src="${CONFIG.BASE_IMAGE_URL + /medium/ + resto.pictureId}" alt="${resto.name}" class="menu__img"></a>
+<h3 class="menu__name">${resto.name}</h3>
+<span class="menu__detail">${resto.description}</span>
+<span class="menu__preci">${resto.city}</span>
+<span class="button menu__button">${resto.rating}</span>
+</div>
   `;
 
 const createLikeButtonTemplate = () => `
-  <button aria-label="like this movie" id="likeButton" class="like">
+  <button aria-label="like this resto" id="likeButton" class="like">
      <i class="fa fa-heart-o" aria-hidden="true"></i>
   </button>
 `;
 
 const createLikedButtonTemplate = () => `
-  <button aria-label="unlike this movie" id="likeButton" class="like">
+  <button aria-label="unlike this reso" id="likeButton" class="like">
     <i class="fa fa-heart" aria-hidden="true"></i>
   </button>
 `;
 
 export {
-  createMovieItemTemplate,
-  createMovieDetailTemplate,
+  createRestoItemTemplate,
+  createRestoDetailTemplate,
   createLikeButtonTemplate,
   createLikedButtonTemplate,
 };

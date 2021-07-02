@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free movie catalogue for you">
-    <meta name="theme-color" content="#db0000"/>
+    <meta name="description" content="Catalog Resto">
     <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
     <link rel="icon" href="favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+        crossorigin="anonymous">
     <link rel="manifest" href="manifest.json">
-    <script src="https://use.fontawesome.com/b070c8f1df.js"></script>
-    <title>Movie Catalogue</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous">
+    <title>Catalog Resto</title>
 </head>
+
 <body>
-<header class="app-bar">
-    <div class="app-bar__menu">
-        <button id="hamburgerButton">☰</button>
-    </div>
-    <div class="app-bar__brand">
-        <h1>Movie Catalogue</h1>
-    </div>
-    <nav id="navigationDrawer" class="app-bar__navigation">
-        <ul>
-            <li><a href="#/now-playing">Now Playing</a></li>
-            <li><a href="#/upcoming">Upcoming</a></li>
-            <li><a href="#/like">Liked Movies</a></li>
-        </ul>
-    </nav>
-</header>
-<main id="mainContent"></main>
-<footer>
-    <p>All data obtained from <a href="https://themoviedb.org" target="_blank" rel="noreferrer">TheMovieDB</a></p>
-</footer>
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+            <a href="#home" class="skip-link">Menuju ke konten</a>
+            <button class="nav__toggle" id="nav-toggle">☰
+            </button>
+            <a href="#home" class="nav__logo"><img src="../images/logo.png"></a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#/main" class="nav__link active-link">Home</a></li>
+                    <li class="nav__item"><a href="#/like" class="nav__link">Favorite</a></li>
+                    <li class="nav__item"><a href="https://www.linkedin.com/in/asnan-asrawi-2a1330140" target="_blank"
+                            class="nav__link">About Us</a></li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+    <main id="mainContent">
+    </main>
+
+    <footer class="section">
+        <p class="footer__copy">Copyright&#169;2021 - Asnan Food</p>
+    </footer>
 </body>
+
 </html>

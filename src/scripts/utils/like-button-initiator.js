@@ -1,27 +1,27 @@
-import FavoriteMovieIdb from '../data/favorite-movie-idb';
+import RestaurantsIdb from '../data/restaurants-idb';
 import { createLikeButtonTemplate, createLikedButtonTemplate } from '../views/templates/template-creator';
 
 const LikeButtonInitiator = {
-  async init({ likeButtonContainer, movie }) {
+  async init({ likeButtonContainer, resto }) {
     this._likeButtonContainer = likeButtonContainer;
-    this._movie = movie;
+    this._resto = resto;
 
     await this._renderButton();
   },
 
   async _renderButton() {
-    const { id } = this._movie;
+    const { id } = this._resto;
 
-    if (await this._isMovieExist(id)) {
+    if (await this._isRestoExist(id)) {
       this._renderLiked();
     } else {
       this._renderLike();
     }
   },
 
-  async _isMovieExist(id) {
-    const movie = await FavoriteMovieIdb.getMovie(id);
-    return !!movie;
+  async _isRestoExist(id) {
+    const resto = await RestaurantsIdb.retrieve(id);
+    return !!resto;
   },
 
   _renderLike() {
@@ -29,7 +29,7 @@ const LikeButtonInitiator = {
 
     const likeButton = document.querySelector('#likeButton');
     likeButton.addEventListener('click', async () => {
-      await FavoriteMovieIdb.putMovie(this._movie);
+      await RestaurantsIdb.put(this._resto);
       this._renderButton();
     });
   },
@@ -39,7 +39,7 @@ const LikeButtonInitiator = {
 
     const likeButton = document.querySelector('#likeButton');
     likeButton.addEventListener('click', async () => {
-      await FavoriteMovieIdb.deleteMovie(this._movie.id);
+      await RestaurantsIdb.delete(this._resto.id);
       this._renderButton();
     });
   },

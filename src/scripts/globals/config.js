@@ -1,13 +1,12 @@
 const CONFIG = {
-  KEY: 'ee16faaec2e7dd05377ae583666b671b',
-  BASE_URL: 'https://api.themoviedb.org/3/',
-  BASE_IMAGE_URL: 'https://image.tmdb.org/t/p/w500/',
+  BASE_URL: 'https://restaurant-api.dicoding.dev',
+  BASE_IMAGE_URL: 'https://restaurant-api.dicoding.dev/images',
   DEFAULT_LANGUAGE: 'en-us',
-  CACHE_NAME: 'MovieCatalogue-V1',
-  DATABASE_NAME: 'movie-catalogue-database',
+  CACHE_NAME: 'AsnanResto-V1',
+  DATABASE_NAME: 'RESTAURANTS_DATABASE',
   DATABASE_VERSION: 1,
-  OBJECT_STORE_NAME: 'movies',
-  WEB_SOCKET_SERVER: 'wss://stormy-badlands-06326.herokuapp.com',
+  OBJECT_STORE_NAME: 'restaurants',
+  // WEB_SOCKET_SERVER: 'tidak ada',
 };
 
 export default CONFIG;

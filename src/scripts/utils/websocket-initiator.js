@@ -8,12 +8,12 @@ const WebSocketInitiator = {
   },
 
   _onMessageHandler(message) {
-    const movie = JSON.parse(message.data);
+    const resto = JSON.parse(message.data);
     NotificationHelper.sendNotification({
-      title: `${movie.title} is on cinema!`,
+      title: `${resto.name} is new resto!`,
       options: {
-        body: movie.overview,
-        image: `${CONFIG.BASE_IMAGE_URL + movie.poster_path}`,
+        body: resto.description,
+        image: `${CONFIG.BASE_IMAGE_URL + /medium/ + resto.pictureId}`,
       },
     });
   },
